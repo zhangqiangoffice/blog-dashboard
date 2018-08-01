@@ -1,5 +1,5 @@
 export const MUTATION_TYPES = {
-    LOGIN: 'LOGIN'
+    LOGIN: 'LOGIN',
 }
 
 export const BASE_URL = '/api'

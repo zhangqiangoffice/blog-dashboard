@@ -21,10 +21,11 @@ export default {
       fetchUserInfo: function () {
         API.login('admin', 'admin')
           .then((res) => {
-            if (res.status === 200) {
+            const { status, data: { userInfo: { username }}} = res
+            if (status === 200) {
+              this.cacheData.username = username
               this.$store.commit({
                 type: MUTATION_TYPES.LOGIN,
-                username: res.data.userInfo.username
               })
             } else {
               console.log('===== res: ', res)

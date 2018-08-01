@@ -7,12 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     hasLogined: false,
-    username: '',
   },
   mutations: {
-    [MUTATION_TYPES.LOGIN] (state, payload) {
+    [MUTATION_TYPES.LOGIN] (state) {
       state.hasLogined = true
-      state.username = payload.username
     }
   },
   actions: {

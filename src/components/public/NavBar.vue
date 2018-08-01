@@ -45,7 +45,7 @@
           </li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" v-if="username">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ username }}
               <span class="caret"></span>
@@ -63,9 +63,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  computed: mapState(['username']),
+  computed: {
+    username: function () {
+      const hasLogined = this.$store.state.hasLogined;
+      return hasLogined ? this.cacheData.username : ''
+    }
+  },
 }
 </script>

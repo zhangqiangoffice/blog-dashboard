@@ -1,4 +1,4 @@
-const session = () => `/user/login`
+const session = () => '/user/login'
 
 export default {
     session,
