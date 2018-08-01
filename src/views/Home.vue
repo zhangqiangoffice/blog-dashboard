@@ -12,6 +12,21 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'home',
-  computed: mapState(['username'])
+  computed: mapState(['username']),
+  methods: {
+      fetchUserInfo: function () {
+        this.axios.get('http://localhost:8080/')
+          .then((res) => {
+            console.log('==============res', res)
+          })
+          .catch((err) => {
+            console.log('==== axios err:', err)
+          })
+      }
+    },
+    mounted: function () {
+      this.fetchUserInfo()
+    }
+
 }
 </script>
