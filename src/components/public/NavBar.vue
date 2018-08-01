@@ -63,9 +63,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  props: {
-    username: String
-  }
+  computed: mapState(['username']),
 }
 </script>

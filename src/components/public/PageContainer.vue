@@ -4,7 +4,6 @@
     <h3>{{pageName}}</h3>
     <slot></slot>
   </div>
-  
 </template>
 
 <script>
