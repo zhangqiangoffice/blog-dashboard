@@ -11,6 +11,7 @@
 <script>
 import NavBar from './components/public/NavBar.vue'
 import { MUTATION_TYPES } from '@/utils/values'
+import API from '@/utils/API.js'
 
 export default {
   components: {
@@ -18,16 +19,15 @@ export default {
   },
   methods: {
       fetchUserInfo: function () {
-        this.$http.post('http://localhost:8080/api/user/login', {
-          username: 'admin',
-          password: 'admin'
-        })
+        API.login('admin', 'admin')
           .then((res) => {
             if (res.status === 200) {
               this.$store.commit({
                 type: MUTATION_TYPES.LOGIN,
                 username: res.data.userInfo.username
               })
+            } else {
+              console.log('===== res: ', res)
             }
           })
           .catch((err) => {
