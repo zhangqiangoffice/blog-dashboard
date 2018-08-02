@@ -1,65 +1,30 @@
 <template>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <router-link class="navbar-brand" to="/">我的博客</router-link>
-      </div>
+  <b-navbar toggleable="md" type="dark" variant="dark" class="mb-3">
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <b-navbar-brand to="/">我的博客</b-navbar-brand>
+    <b-collapse is-nav id="nav_collapse">
+      <b-navbar-nav >
+        <b-nav-item to="/user">用户管理</b-nav-item>
+        <b-nav-item-dropdown text="分类管理" right>
+          <b-dropdown-item to="/category">分类列表</b-dropdown-item>
+          <b-dropdown-item to="/categoryAdd">添加分类</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="文章管理" right>
+          <b-dropdown-item to="/content">文章列表</b-dropdown-item>
+          <b-dropdown-item to="/contentAdd">添加文章</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="">
-          <router-link to="/user">用户管理</router-link>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类管理
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <router-link to="/category">分类列表</router-link>
-              </li>
-              <li>
-                <router-link to="/categoryAdd">添加分类</router-link>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">内容管理
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <router-link to="/content">内容列表</router-link>
-              </li>
-              <li>
-                <router-link to="/contentAdd">添加内容</router-link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right" v-if="username">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ username }}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#">退出</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      <b-navbar-nav class="ml-auto" v-if="username">
+        <b-nav-item-dropdown :text="username" right>
+          <b-dropdown-item href="#">中文</b-dropdown-item>
+          <b-dropdown-item href="#" disabled>EN</b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item href="#" disabled>退出</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>

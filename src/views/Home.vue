@@ -1,10 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="jumbotron">
-      <h1>{{ message }}</h1>
-      <p>欢迎进入我的博客后台管理系统</p>
-    </div>
-  </div>
+  <b-container fluid>
+    <b-jumbotron :header="message" lead="欢迎进入我的博客后台管理系统"></b-jumbotron>
+  </b-container>
 </template>
 
 <script>

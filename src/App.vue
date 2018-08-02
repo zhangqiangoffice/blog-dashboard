@@ -21,7 +21,7 @@ export default {
       fetchUserInfo: function () {
         API.login('admin', 'admin')
           .then((res) => {
-            const { status, data: { userInfo: { username }}} = res
+            const { status, data: { userInfo: { username } } } = res
             if (status === 200) {
               this.cacheData.username = username
               this.$store.commit({

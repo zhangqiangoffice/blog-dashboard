@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
+  <b-container fluid>
     <Breadcrumb :pageName="pageName" />
-    <h3>{{pageName}}</h3>
+    <h5>{{pageName}}</h5>
     <slot></slot>
-  </div>
+  </b-container>
 </template>
 
 <script>

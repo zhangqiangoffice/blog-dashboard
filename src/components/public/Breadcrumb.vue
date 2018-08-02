@@ -1,10 +1,5 @@
 <template>
-  <ol class="breadcrumb">
-    <li>
-      <router-link to="/">管理首页</router-link>
-    </li>
-    <li class="active">{{pageName}}</li>
-  </ol>
+  <b-breadcrumb :items="items"/>
 </template>
 
 <script>
@@ -12,5 +7,16 @@ export default {
   props: {
     pageName: String
   },
+  computed: {
+    items: function () {
+      return [{
+        text: '控制台首页',
+        to: '/'
+      }, {
+        text: this.pageName,
+        active: true
+      }]
+    }
+  }
 }
 </script>
