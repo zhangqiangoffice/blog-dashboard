@@ -3,8 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import CacheData from '@/utils/CacheData'
+import cache from './cache'
 
-Vue.use(CacheData)
+Vue.use(CacheData, { defaultCache: cache })
 
 Vue.config.productionTip = false
 

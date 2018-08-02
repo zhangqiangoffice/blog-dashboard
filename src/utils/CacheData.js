@@ -1,11 +1,7 @@
 
-const cache = {
-    username: ''
-}
-
 export default {
-    install(Vue) {
-        Vue.prototype.cacheData = cache
+    install(Vue, options) {
+        Vue.prototype.cacheData = options.defaultCache
     }
 }
 
