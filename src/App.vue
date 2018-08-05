@@ -18,8 +18,8 @@ export default {
     NavBar,
   },
   methods: {
-      fetchUserInfo: function () {
-        API.login('admin', 'admin')
+      checkUserInfo: function () {
+        API.checkLogin()
           .then((res) => {
             const { status, data: { userInfo: { username } } } = res
             if (status === 200) {
@@ -37,7 +37,7 @@ export default {
       }
     },
     mounted: function () {
-      this.fetchUserInfo()
+      // this.checkUserInfo()
     }
 }
 </script>
