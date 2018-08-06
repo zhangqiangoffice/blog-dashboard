@@ -3,8 +3,8 @@
     <h4>登录</h4>
     <hr class="my-4" />
     <b-form @submit="onSubmit" inline>
-      <b-form-input class="mb-2 mr-sm-2 mb-sm-0" v-model="username" type="text" placeholder="用户名" />
-      <b-form-input class="mb-2 mr-sm-2 mb-sm-0" v-model="password" type="password" placeholder="密码" />
+      <b-form-input class="mb-2 mr-sm-2 mb-sm-0" v-model="username" required type="text" placeholder="用户名" />
+      <b-form-input class="mb-2 mr-sm-2 mb-sm-0" v-model="password" required type="password" placeholder="密码" />
       <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">记住我</b-form-checkbox>
       <b-button type="submit" variant="primary" :disabled="isLoading">登录</b-button>
     </b-form>
@@ -30,6 +30,7 @@ export default {
     onSubmit (evt) {
       evt.preventDefault();
       this.isLoading = true;
+      this.errText = '';
       API.login(this.username, this.password)
       .then((res) => {
         this.isLoading = false
