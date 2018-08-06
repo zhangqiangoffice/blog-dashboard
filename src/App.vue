@@ -1,8 +1,8 @@
 <template>
   <div>
     <NavBar />
-    <!-- <router-link to="/about">About</router-link> -->
-    <transition >
+    <loading v-if="isChecking" />
+    <transition v-else>
       <router-view />
     </transition>
   </div>
@@ -10,34 +10,40 @@
 
 <script>
 import NavBar from './components/public/NavBar.vue'
-import { MUTATION_TYPES } from '@/utils/values'
+import Loading from './components/public/Loading.vue'
 import API from '@/utils/API.js'
+import { MUTATION_TYPES } from '@/utils/values'
 
 export default {
   components: {
     NavBar,
+    Loading,
+  },
+  data: function () {
+    return {
+      isChecking: true
+    }
   },
   methods: {
-      checkUserInfo: function () {
+      checkUserLogin: function () {
         API.checkLogin()
-          .then((res) => {
-            const { status, data: { userInfo: { username } } } = res
-            if (status === 200) {
-              this.cacheData.username = username
-              this.$store.commit({
-                type: MUTATION_TYPES.LOGIN,
-              })
-            } else {
-              console.log('===== res: ', res)
-            }
-          })
-          .catch((err) => {
-            console.log('==== $http err:', err)
-          })
+        .then((res) => {
+          this.isChecking = false
+          if (res.data.userInfo) {
+            this.cacheData.username = res.data.userInfo.username
+            this.$store.commit({
+              type: MUTATION_TYPES.LOGIN,
+            })
+          }
+        })
+        .catch((err) => {
+          this.isChecking = false
+          console.log('==== $http err:', err)
+        })
       }
     },
     mounted: function () {
-      // this.checkUserInfo()
+      this.checkUserLogin()
     }
 }
 </script>

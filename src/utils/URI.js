@@ -1,5 +1,7 @@
-const session = () => '/user/login'
+const login = () => '/user/login'
+const checkLogin = () => '/user/checkLogin'
 
 export default {
-    session,
+    login,
+    checkLogin,
 }

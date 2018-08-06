@@ -13,11 +13,14 @@ const axiosForm = Axios.create({
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 })
 
-const login = (username, password) => axiosForm.post(URI.session(), {
+const login = (username, password) => axiosForm.post(URI.login(), {
     username,
     password
 })
 
+const checkLogin = () => axiosForm.get(URI.checkLogin())
+
 export default {
     login,
+    checkLogin
 }
