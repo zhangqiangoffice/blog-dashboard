@@ -22,8 +22,11 @@ const checkLogin = () => axiosForm.get(URI.checkLogin())
 
 const logout = () => axiosForm.get(URI.logout())
 
+const userList = (page, limit) => axiosForm.get(URI.userList(), { params: { page, limit } })
+
 export default {
     login,
     checkLogin,
     logout,
+    userList,
 }

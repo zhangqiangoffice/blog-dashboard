@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container >
     <welcome v-if="hasLogined" />
     <login-form v-else />
   </b-container>

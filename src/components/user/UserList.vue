@@ -1,43 +1,57 @@
 <template>
-  <table class="table table-hover table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>用户名</th>
-            <th>密码</th>
-            <th>是否是管理员</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td>user._id</td>
-            <td>user.username</td>
-            <td>user.password</td>
-            <td>是</td>
-        </tr>
-    </tbody>
-  </table>
+  <div>
+  <b-table striped bordered hover :items="users" :fields="fields">
+    <template slot="isAdmin" slot-scope="data">
+      {{data.index ? '是' : '否'}}
+    </template>
+    <template slot="operation" slot-scope="row">
+      <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">删除</b-button>
+    </template>
+  </b-table>
+  <b-pagination :disabled="isLoading" align="right" size="md" :total-rows="total" v-model="page" :per-page="limit" @change="fetchUsers"></b-pagination>
+  </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import API from '@/utils/API.js'
 
 export default {
   data: function () {
     return {
-      users: []
+      isLoading: true,
+      users: [],
+      page: 1,
+      limit: 10,
+      total: 0,
+      fields: [
+        {
+          key: 'username',
+          label: '用户名'
+        },
+        {
+          key: 'isAdmin',
+          label: '是否是管理员',
+        },
+        {
+          key: 'operation',
+          label: '操作',
+        }
+      ],
     }
   },
   methods: {
-    fetchUsers: function () {
-      // axios.get('http://localhost:3000/articles')
-      //   .then(function(response){
-      //     this.users = response.data
-      //   })
-      //   .catch(function(err) {
-      //     console.log(err)
-      //   })
+    fetchUsers: function (page) {
+      this.isLoading = true
+      API.userList(page || this.page, this.limit)
+      .then(res => {
+        this.users = res.data.list
+        this.total = res.data.total
+        this.isLoading = false
+      })
+      .catch(err => {
+        this.isLoading = false
+        console.log('err', err)
+      })
     }
   },
   mounted: function () {

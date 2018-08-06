@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container>
     <Breadcrumb :pageName="pageName" />
     <h5>{{pageName}}</h5>
     <slot></slot>
