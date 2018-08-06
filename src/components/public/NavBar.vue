@@ -20,7 +20,7 @@
         <b-nav-item-dropdown :text="dropdownName" right>
           <b-dropdown-item v-for="item in locales" :key="item" @click="setLocale(item)" :disabled="item === locale">{{ item | translate }}</b-dropdown-item>
           <b-dropdown-divider v-if="hasLogined"></b-dropdown-divider>
-          <b-dropdown-item href="#" disabled v-if="hasLogined">退出</b-dropdown-item>
+          <b-dropdown-item href="#" v-if="hasLogined" @click="logout" >退出</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import API from '@/utils/API.js'
+
 export default {
   computed: {
     hasLogined: function () {
@@ -47,6 +49,14 @@ export default {
   methods: {
     setLocale: function (locale) {
       this.$i18n.set(locale)
+    },
+    logout: function () {
+      API.logout()
+      .then(res => {
+        if (!res.data.code) {
+          window.location.reload()
+        }
+      })
     }
   }
 }

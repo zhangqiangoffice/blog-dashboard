@@ -20,7 +20,10 @@ const login = (username, password) => axiosForm.post(URI.login(), {
 
 const checkLogin = () => axiosForm.get(URI.checkLogin())
 
+const logout = () => axiosForm.get(URI.logout())
+
 export default {
     login,
-    checkLogin
+    checkLogin,
+    logout,
 }
