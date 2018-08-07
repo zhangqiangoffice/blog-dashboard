@@ -18,7 +18,7 @@
   overflow: hidden;
 }
 .content {
-  width: 30%; 
+  width: 30%;
   margin: 70px auto 0;
 }
 </style>

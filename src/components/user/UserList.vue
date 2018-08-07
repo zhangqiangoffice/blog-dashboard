@@ -2,16 +2,16 @@
   <div>
     <div class="position-relative">
       <b-table striped bordered hover :items="users" :fields="fields">
-        <template slot="isAdmin" slot-scope="data">
-          {{data.index ? '是' : '否'}}
-        </template>
-        <template slot="operation" slot-scope="row">
-          <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">删除</b-button>
+        <template slot="actions" slot-scope="row">
+          <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-2">删除</b-button>
         </template>
       </b-table>
       <progress-overlay v-show="isLoading"/>
     </div>
     <b-pagination :disabled="isLoading" align="right" size="md" :total-rows="total" v-model="page" :per-page="limit" @change="fetchUsers"></b-pagination>
+    <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
+      <pre>{{ modalInfo.content }}</pre>
+    </b-modal>
   </div>
 </template>
 
@@ -33,14 +33,25 @@ export default {
           label: '用户名'
         },
         {
-          key: 'isAdmin',
-          label: '是否是管理员',
+          key: 'registerDate',
+          label: '注册日期',
+          formatter: value => {
+            return value ? new Date(value).toLocaleString() : ''
+          }
         },
         {
-          key: 'operation',
+          key: 'isAdmin',
+          label: '是否是管理员',
+          formatter: value => {
+            return value ? '是' : '否'
+          }
+        },
+        {
+          key: 'actions',
           label: '操作',
         }
       ],
+      modalInfo: { title: '', content: '' },
     }
   },
   components: {
@@ -59,12 +70,19 @@ export default {
         this.isLoading = false
         console.log('err', err)
       })
-    }
+    },
+    info (item, index, button) {
+      this.modalInfo.title = `Row index: ${index}`
+      this.modalInfo.content = JSON.stringify(item, null, 2)
+      this.$root.$emit('bv::show::modal', 'modalInfo', button)
+    },
+    resetModal () {
+      this.modalInfo.title = ''
+      this.modalInfo.content = ''
+    },
   },
   mounted: function () {
     this.fetchUsers()
   }
 }
 </script>
-
-
