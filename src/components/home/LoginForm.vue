@@ -10,6 +10,7 @@
     </b-form>
     <hr class="my-4" />
     <b-alert :show="errText !== ''" variant="danger">{{ errText }}</b-alert>
+    <b-progress :value="100" v-show="isLoading" variant="info" animated></b-progress>
   </b-jumbotron>
 </template>
 
