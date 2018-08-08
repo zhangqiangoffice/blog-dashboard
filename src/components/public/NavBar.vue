@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="dark" variant="dark" class="mb-3">
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <b-navbar-brand to="/">我的博客</b-navbar-brand>
+    <b-navbar-brand to="/">{{ 'My_Blog' | t }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav v-if="hasLogined">
         <b-nav-item to="/user">用户管理</b-nav-item>
@@ -18,7 +18,7 @@
 
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown :text="dropdownName" right>
-          <b-dropdown-item v-for="item in locales" :key="item" @click="setLocale(item)" :disabled="item === locale">{{ item | translate }}</b-dropdown-item>
+          <b-dropdown-item v-for="item in locales" :key="item" @click="setLocale(item)" :disabled="item === locale">{{ item | t }}</b-dropdown-item>
           <b-dropdown-divider v-if="hasLogined"></b-dropdown-divider>
           <b-dropdown-item href="#" v-if="hasLogined" @click="logout" >退出</b-dropdown-item>
         </b-nav-item-dropdown>
