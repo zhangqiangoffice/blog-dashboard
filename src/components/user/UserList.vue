@@ -68,7 +68,7 @@ export default {
       })
       .catch(err => {
         this.isLoading = false
-        console.log('err', err)
+        API.handleErr(err)
       })
     },
     info (item, index, button) {
