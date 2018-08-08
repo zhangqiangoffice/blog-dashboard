@@ -2,7 +2,7 @@ import Axios from 'axios'
 import Qs from 'qs'
 import URI from './URI'
 import { BASE_URL, API_VERSION } from './values'
-import router from '@/router'
+import store from '@/store'
 
 const axiosForm = Axios.create({
     baseURL: `${BASE_URL}${API_VERSION}`,
@@ -28,7 +28,7 @@ const getUserList = (page, limit) => axiosForm.get(URI.userList(), { params: { p
 const handleErr = err => {
     console.log('API err: ', err)
     if (err.response.status === 403 ) {
-        router.replace('/')
+        store.dispatch({ type: 'logout' })
     }
 }
 

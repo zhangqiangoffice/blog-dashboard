@@ -1,5 +1,5 @@
 <template>
-  <b-jumbotron>
+  <b-jumbotron class="position-relative">
     <h4>登录</h4>
     <hr class="my-4" />
     <b-form @submit="onSubmit" inline>
@@ -10,12 +10,12 @@
     </b-form>
     <hr class="my-4" />
     <b-alert :show="errText !== ''" variant="danger">{{ errText }}</b-alert>
-    <b-progress :value="100" v-show="isLoading" variant="info" animated></b-progress>
+    <progress-overlay v-show="isLoading"/>
   </b-jumbotron>
 </template>
 
 <script>
-import { MUTATION_TYPES } from '@/utils/values'
+import ProgressOverlay from '@/components/public/ProgressOverlay.vue'
 import API from '@/utils/API.js'
 
 export default {
@@ -27,6 +27,9 @@ export default {
       password: ''
     }
   },
+  components: {
+    ProgressOverlay,
+  },
   methods: {
     onSubmit (evt) {
       evt.preventDefault();
@@ -37,9 +40,9 @@ export default {
         this.isLoading = false
         if (res.status === 200) {
           if (!res.data.code) {
-            this.cacheData.username = this.username
-            this.$store.commit({
-              type: MUTATION_TYPES.LOGIN,
+            this.$store.dispatch({
+              type: 'login',
+              username: this.username
             })
           } else {
             this.errText = res.data.message

@@ -54,7 +54,7 @@ export default {
       API.logout()
       .then(res => {
         if (!res.data.code) {
-          window.location.reload()
+          this.$store.dispatch({ type: 'logout' })
         }
       })
     }

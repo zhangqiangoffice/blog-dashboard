@@ -1,19 +1,34 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { MUTATION_TYPES } from './utils/values'
+import cache from '@/cache'
+import router from '@/router'
 
 Vue.use(Vuex)
+
+const LOGIN = 'LOGIN'
+const LOGOUT = 'LOGOUT'
 
 export default new Vuex.Store({
   state: {
     hasLogined: false,
   },
   mutations: {
-    [MUTATION_TYPES.LOGIN] (state) {
+    [LOGIN] (state) {
       state.hasLogined = true
+    },
+    [LOGOUT](state) {
+      state.hasLogined = false
     }
   },
   actions: {
-
+    login({ commit }, { username }) {
+      cache.username = username
+      commit(LOGIN)
+    },
+    logout ({ commit }) {
+      cache.username = ''
+      commit(LOGOUT)
+      router.replace('/')
+    }
   }
 })
