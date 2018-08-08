@@ -60,7 +60,7 @@ export default {
   methods: {
     fetchUsers: function (page) {
       this.isLoading = true
-      API.userList(page || this.page, this.limit)
+      API.getUserList(page || this.page, this.limit)
       .then(res => {
         this.users = res.data.list
         this.total = res.data.total
