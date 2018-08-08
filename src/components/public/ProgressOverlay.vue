@@ -14,11 +14,15 @@
   bottom: 0;
   left: 0;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 .content {
+  position: absolute;
   width: 30%;
-  margin: 70px auto 0;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 </style>
