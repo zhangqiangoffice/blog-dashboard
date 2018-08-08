@@ -28,7 +28,7 @@ const getUserList = (page, limit) => axiosForm.get(URI.userList(), { params: { p
 const handleErr = err => {
     console.log('API err: ', err)
     if (err.response.status === 403 ) {
-        store.dispatch({ type: 'logout' })
+        store.dispatch({ type: 'logoutCompleted' })
     }
 }
 

@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import API from '@/utils/API.js'
 
 export default {
   computed: {
@@ -51,12 +50,7 @@ export default {
       this.$i18n.set(locale)
     },
     logout: function () {
-      API.logout()
-      .then(res => {
-        if (!res.data.code) {
-          this.$store.dispatch({ type: 'logout' })
-        }
-      })
+      this.$store.dispatch({ type: 'logout' })
     }
   }
 }

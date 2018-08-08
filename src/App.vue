@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NavBar />
-    <loading v-if="isChecking" />
+    <nav-bar />
+    <progress-overlay v-if="isChecking" />
     <transition v-else>
       <router-view />
     </transition>
@@ -10,39 +10,23 @@
 
 <script>
 import NavBar from './components/public/NavBar.vue'
-import Loading from './components/public/Loading.vue'
-import API from '@/utils/API.js'
+import ProgressOverlay from './components/public/ProgressOverlay.vue'
 
 export default {
   components: {
     NavBar,
-    Loading,
+    ProgressOverlay,
   },
   data: function () {
     return {
       isChecking: true
     }
   },
-  methods: {
-      checkUserLogin: function () {
-        API.checkLogin()
-        .then((res) => {
-          this.isChecking = false
-          if (res.data.userInfo) {
-            this.$store.dispatch({
-              type: 'login',
-              username: res.data.userInfo.username
-            })
-          }
-        })
-        .catch((err) => {
-          this.isChecking = false
-          API.handleErr(err)
-        })
-      }
-    },
-    mounted: function () {
-      this.checkUserLogin()
-    }
+  mounted: function () {
+    this.$store.dispatch({ type: 'checkLogin' })
+    .then(() => {
+      this.isChecking = false
+    })
+  }
 }
 </script>

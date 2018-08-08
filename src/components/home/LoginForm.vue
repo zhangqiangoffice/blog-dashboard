@@ -16,7 +16,6 @@
 
 <script>
 import ProgressOverlay from '@/components/public/ProgressOverlay.vue'
-import API from '@/utils/API.js'
 
 export default {
   data: function () {
@@ -35,25 +34,16 @@ export default {
       evt.preventDefault();
       this.isLoading = true;
       this.errText = '';
-      API.login(this.username, this.password)
-      .then((res) => {
-        this.isLoading = false
-        if (res.status === 200) {
-          if (!res.data.code) {
-            this.$store.dispatch({
-              type: 'login',
-              username: this.username
-            })
-          } else {
-            this.errText = res.data.message
-          }
-        } else {
-          this.errText = res.status
-        }
+      this.$store.dispatch({
+        type: 'login',
+        username: this.username,
+        password: this.password,
       })
-      .catch((err) => {
+      .then(errText => {
         this.isLoading = false
-        this.errText = err
+        if (errText) {
+          this.errText = errText
+        }
       })
     }
   }
