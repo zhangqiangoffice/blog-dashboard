@@ -10,7 +10,7 @@ export default {
   computed: {
     items: function () {
       return [{
-        text: '控制台首页',
+        text: this.$t('Home'),
         to: '/'
       }, {
         text: this.pageName,

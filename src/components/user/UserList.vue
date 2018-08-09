@@ -27,32 +27,31 @@ export default {
       page: 1,
       limit: 10,
       total: 0,
-      fields: [
-        {
+      modalInfo: { title: '', content: '' },
+    }
+  },
+  computed: {
+    fields: function(){
+      return [{
           key: 'username',
-          label: '用户名'
-        },
-        {
+          label: this.$t('User_name')
+        },{
           key: 'registerDate',
-          label: '注册日期',
+          label: this.$t('Register_date'),
           formatter: value => {
             return value ? new Date(value).toLocaleString() : ''
           }
-        },
-        {
+        },{
           key: 'isAdmin',
-          label: '是否是管理员',
+          label: this.$t('Administrator'),
           formatter: value => {
-            return value ? '是' : '否'
+            return value ? this.$t('Yes') : this.$t('No')
           }
-        },
-        {
+        },{
           key: 'actions',
-          label: '操作',
-        }
-      ],
-      modalInfo: { title: '', content: '' },
-    }
+          label: this.$t('Actions'),
+        }]
+    },
   },
   components: {
     ProgressOverlay,

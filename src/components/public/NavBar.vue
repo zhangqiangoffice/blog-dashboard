@@ -14,13 +14,13 @@
           <b-dropdown-item to="/contentAdd">添加文章</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
-      <b-nav-text v-else>博客后台管理系统</b-nav-text>
+      <b-nav-text v-else>{{ 'Blogs_backstage_management_system' | t }}</b-nav-text>
 
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown :text="dropdownName" right>
           <b-dropdown-item v-for="lang in locales" :key="lang" @click="setLocale(lang)" :disabled="lang === locale">{{ lang | tIn(lang) }}</b-dropdown-item>
           <b-dropdown-divider v-if="hasLogined"></b-dropdown-divider>
-          <b-dropdown-item href="#" v-if="hasLogined" @click="logout" >退出</b-dropdown-item>
+          <b-dropdown-item href="#" v-if="hasLogined" @click="logout" >{{ 'Logout' | t }}</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
@@ -36,7 +36,7 @@ export default {
     },
     dropdownName: function () {
       const hasLogined = this.$store.state.hasLogined
-      return hasLogined ? this.cacheData.username : '语言'
+      return hasLogined ? this.cacheData.username : this.$t('Translations')
     },
     locale: function () {
       return this.$i18n.locale()

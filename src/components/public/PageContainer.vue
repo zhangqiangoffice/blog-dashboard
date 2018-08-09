@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <Breadcrumb :pageName="pageName" />
-    <h5>{{pageName}}</h5>
+    <h5>{{ pageName }}</h5>
     <slot></slot>
   </b-container>
 </template>
