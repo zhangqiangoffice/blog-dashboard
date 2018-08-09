@@ -16,7 +16,10 @@ Vue.config.productionTip = false
 Vue.use(CacheData, { defaultCache: cache })
 Vue.use(BootstrapVue);
 
-Vue.use(vuexI18n.plugin, store, { translateFilterName: 't' });
+Vue.use(vuexI18n.plugin, store, {
+  translateFilterName: 't',
+  translateInFilterName: 'tIn'
+});
 Vue.i18n.add('en', en);
 Vue.i18n.add('zh', zh);
 Vue.i18n.set('zh');

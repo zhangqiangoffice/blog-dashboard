@@ -18,7 +18,7 @@
 
       <b-navbar-nav class="ml-auto">
         <b-nav-item-dropdown :text="dropdownName" right>
-          <b-dropdown-item v-for="item in locales" :key="item" @click="setLocale(item)" :disabled="item === locale">{{ item | t }}</b-dropdown-item>
+          <b-dropdown-item v-for="lang in locales" :key="lang" @click="setLocale(lang)" :disabled="lang === locale">{{ lang | tIn(lang) }}</b-dropdown-item>
           <b-dropdown-divider v-if="hasLogined"></b-dropdown-divider>
           <b-dropdown-item href="#" v-if="hasLogined" @click="logout" >退出</b-dropdown-item>
         </b-nav-item-dropdown>

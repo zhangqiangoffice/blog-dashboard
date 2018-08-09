@@ -1,6 +1,5 @@
 export default {
-    title: '标题',
     My_Blog: '我的博客',
-    en: 'en',
+    en: '英语',
     zh: '中文',
 }

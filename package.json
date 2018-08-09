@@ -13,7 +13,7 @@
     "vue": "2.5.16",
     "vue-router": "3.0.1",
     "vuex": "3.0.1",
-    "vuex-i18n": "git+https://github.com/zhangqiangoffice/vuex-i18n.git"
+    "vuex-i18n": "git+https://github.com/zhangqiangoffice/vuex-i18n.git#8038b8b7c7ba7672160e73fa63350109ba720ed3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "3.0.0-rc.8",
