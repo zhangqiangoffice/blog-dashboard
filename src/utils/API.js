@@ -25,10 +25,15 @@ const logout = () => axiosForm.get(URI.logout())
 
 const getUserList = (page, limit) => axiosForm.get(URI.userList(), { params: { page, limit } })
 
-const handleErr = err => {
+const deleteUserById = id => axiosForm.delete(URI.users(id))
+
+const handleErr = (err, msg) => {
     console.log('API err: ', err)
     if (err.response.status === 403 ) {
         store.dispatch({ type: 'logoutCompleted' })
+    }
+    if (msg) {
+        store.dispatch({ type: 'showAlert', msg })
     }
 }
 
@@ -37,5 +42,6 @@ export default {
     checkLogin,
     logout,
     getUserList,
+    deleteUserById,
     handleErr,
 }

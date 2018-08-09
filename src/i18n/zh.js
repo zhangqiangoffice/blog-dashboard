@@ -17,4 +17,11 @@ export default {
     Yes: '是',
     No: '否',
     Actions: '操作',
+    Delete: '删除',
+    Confirm: '确认',
+    Attention: '注意',
+    Cancel: '取消',
+    Confirm_delete_user: '确认要删除用户',
+    Failed_to_delete_the_user: '删除用户失败',
+
 }

@@ -3,14 +3,14 @@
     <div class="position-relative">
       <b-table striped bordered hover :items="users" :fields="fields">
         <template slot="actions" slot-scope="row">
-          <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-2">删除</b-button>
+          <b-button size="sm" @click.stop="deleteConfirm(row.item, $event.target)" class="mr-2" variant="danger">{{ 'Delete' | t }}</b-button>
         </template>
       </b-table>
       <progress-overlay v-show="isLoading"/>
     </div>
     <b-pagination :disabled="isLoading" align="right" size="md" :total-rows="total" v-model="page" :per-page="limit" @change="fetchUsers"></b-pagination>
-    <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
-      <pre>{{ modalInfo.content }}</pre>
+    <b-modal id="modalInfo" @hide="resetModal" @ok="deleteUser" :title="'Attention' | t" :ok-title="'Confirm' | t" :cancel-title="'Cancel' | t">
+      <p>{{ 'Confirm_delete_user' | t }} <strong variant="info">{{ selectedUser.username }}</strong> ?</p>
     </b-modal>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
       page: 1,
       limit: 10,
       total: 0,
-      modalInfo: { title: '', content: '' },
+      selectedUser: {},
     }
   },
   computed: {
@@ -70,15 +70,23 @@ export default {
         API.handleErr(err)
       })
     },
-    info (item, index, button) {
-      this.modalInfo.title = `Row index: ${index}`
-      this.modalInfo.content = JSON.stringify(item, null, 2)
+    deleteConfirm (item, button) {
+      this.selectedUser = item
       this.$root.$emit('bv::show::modal', 'modalInfo', button)
     },
-    resetModal () {
-      this.modalInfo.title = ''
-      this.modalInfo.content = ''
+    deleteUser() {
+      console.log('0000000000000000000000')
+      this.isLoading = true
+      API.deleteUserById(this.selectedUser._id)
+      .then()
+      .catch(err => {
+        this.isLoading = false
+        API.handleErr(err, `${this.$t('Failed_to_delete_the_user')} : ${this.selectedUser.username} ! ${err.toString()}`)
+      })
     },
+    resetModal () {
+      this.selectedUser = {}
+    }
   },
   mounted: function () {
     this.fetchUsers()
