@@ -1,4 +1,4 @@
-# hello-world
+# blog-dashboard
 
 ## Project setup
 ```
