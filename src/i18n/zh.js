@@ -23,5 +23,6 @@ export default {
     Cancel: '取消',
     Confirm_delete_user: '确认要删除用户',
     Failed_to_delete_the_user: '删除用户失败',
+    Successful_operation: '操作成功',
 
 }

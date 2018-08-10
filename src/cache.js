@@ -1,3 +1,6 @@
+
 export default {
-    username: ''
+    username: '',
+    alertContent: '',
+    alertVarinat: null,
 }

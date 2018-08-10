@@ -3,15 +3,21 @@ import Vuex from 'vuex'
 import cache from '@/cache'
 import router from '@/router'
 import API from '@/utils/API.js'
+import { ALERT_COUNT_DOWN } from '@/utils/values'
 
 Vue.use(Vuex)
 
 const LOGIN = 'LOGIN'
 const LOGOUT = 'LOGOUT'
+const SHOW_ALERT = 'SHOW_ALERT'
+const HIDE_ALERT = 'HIDE_ALERT'
+
+let timer
 
 export default new Vuex.Store({
   state: {
     hasLogined: false,
+    isShowingAlert: false,
   },
   mutations: {
     [LOGIN] (state) {
@@ -19,7 +25,13 @@ export default new Vuex.Store({
     },
     [LOGOUT](state) {
       state.hasLogined = false
-    }
+    },
+    [SHOW_ALERT](state) {
+      state.isShowingAlert = true
+    },
+    [HIDE_ALERT](state) {
+      state.isShowingAlert = false
+    },
   },
   actions: {
     loginSuccess({ commit }, { username }) {
@@ -68,6 +80,21 @@ export default new Vuex.Store({
             dispatch({ type: 'logoutCompleted' })
           }
         })
+    },
+    showAlert({ commit, dispatch }, { content, variant }) {
+      dispatch({ type: 'hideAlert' })
+      cache.alertContent = content
+      cache.alertVariant = variant
+      commit(SHOW_ALERT)
+      timer = setTimeout(() => {
+        dispatch({ type: 'hideAlert' })
+      }, ALERT_COUNT_DOWN)
+    },
+    hideAlert({ commit }) {
+      commit(HIDE_ALERT)
+      cache.alertContent = ''
+      cache.alertVariant = null
+      timer && clearTimeout(timer)
     }
   }
 })

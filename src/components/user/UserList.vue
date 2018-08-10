@@ -18,6 +18,7 @@
 <script>
 import API from '@/utils/API.js'
 import ProgressOverlay from '@/components/public/ProgressOverlay.vue'
+import { ALERT_VARIANT } from '@/utils/values'
 
 export default {
   data: function () {
@@ -59,7 +60,7 @@ export default {
   methods: {
     fetchUsers: function (page) {
       this.isLoading = true
-      API.getUserList(page || this.page, this.limit)
+      return API.getUserList(page || this.page, this.limit)
       .then(res => {
         this.users = res.data.list
         this.total = res.data.total
@@ -75,13 +76,23 @@ export default {
       this.$root.$emit('bv::show::modal', 'modalInfo', button)
     },
     deleteUser() {
-      console.log('0000000000000000000000')
+      const { _id, username } = this.selectedUser
       this.isLoading = true
-      API.deleteUserById(this.selectedUser._id)
-      .then()
+      API.deleteUserById(_id)
+      .then(res => {
+        if (res.data.code === 0) {
+          this.page = 1
+          this.$store.dispatch({ type: 'showAlert', content: `${this.$t('Successful_operation')}`, variant: ALERT_VARIANT.SUCCESS })
+          return this.fetchUsers()
+        } else {
+          this.$store.dispatch({ type: 'showAlert', content: res.data.message, variant: ALERT_VARIANT.DANGER })
+        }
+      })
       .catch(err => {
+        API.handleErr(err, `${this.$t('Failed_to_delete_the_user')} : ${username} ! ${err.toString()}`)
+      })
+      .then(() => {
         this.isLoading = false
-        API.handleErr(err, `${this.$t('Failed_to_delete_the_user')} : ${this.selectedUser.username} ! ${err.toString()}`)
       })
     },
     resetModal () {

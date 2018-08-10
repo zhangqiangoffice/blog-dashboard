@@ -23,5 +23,6 @@ export default {
     Cancel: 'Cancel',
     Confirm_delete_user: 'Confirm that you want to delete user',
     Failed_to_delete_the_user: 'Failed to delete the user',
+    Successful_operation: 'Successful operation',
 
 }

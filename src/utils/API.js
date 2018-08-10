@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import Qs from 'qs'
 import URI from './URI'
-import { BASE_URL, API_VERSION } from './values'
+import { BASE_URL, API_VERSION, ALERT_VARIANT } from './values'
 import store from '@/store'
 
 const axiosForm = Axios.create({
@@ -33,7 +33,7 @@ const handleErr = (err, msg) => {
         store.dispatch({ type: 'logoutCompleted' })
     }
     if (msg) {
-        store.dispatch({ type: 'showAlert', msg })
+        store.dispatch({ type: 'showAlert', content: msg, variant: ALERT_VARIANT.DANGER })
     }
 }
 
