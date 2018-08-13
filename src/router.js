@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/category',
       name: 'category',
-      component: () => import('./views/Category.vue')
+      component: () => import('./components/category/ListTab.vue')
     },
     {
       path: '/categoryAdd',

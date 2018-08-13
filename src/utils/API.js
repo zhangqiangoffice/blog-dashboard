@@ -27,6 +27,10 @@ const getUserList = (page, limit) => axiosForm.get(URI.userList(), { params: { p
 
 const deleteUserById = id => axiosForm.delete(URI.users(id))
 
+const getCategoryList = (page, limit) => axiosForm.get(URI.categories(), { params: { page, limit } })
+
+const deleteCategoryById = id => axiosForm.delete(URI.categories(id))
+
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
     if (err.response.status === 403 ) {
@@ -41,7 +45,9 @@ export default {
     login,
     checkLogin,
     logout,
+    handleErr,
     getUserList,
     deleteUserById,
-    handleErr,
+    getCategoryList,
+    deleteCategoryById,
 }

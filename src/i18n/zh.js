@@ -22,6 +22,7 @@ export default {
     Attention: '注意',
     Cancel: '取消',
     Confirm_delete: '确认要删除',
+    Category_name: '分类名称',
     notice: {
         Failed_to_delete: '删除失败',
         Successful_operation: '操作成功',

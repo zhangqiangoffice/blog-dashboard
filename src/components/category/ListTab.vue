@@ -1,15 +1,17 @@
 <template>
-  <PageContainer pageName="分类列表">
-    <div>123</div>
+  <PageContainer pageName="nav.Categories">
+    <category-list />
   </PageContainer>
 </template>
 
 <script>
 import PageContainer from '@/components/public/PageContainer.vue'
+import CategoryList from './CategoryList.vue'
 
 export default {
   components: {
     PageContainer,
+    CategoryList,
   }
 }
 </script>

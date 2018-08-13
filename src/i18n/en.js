@@ -22,6 +22,7 @@ export default {
     Attention: 'Attention',
     Cancel: 'Cancel',
     Confirm_delete: 'Confirm that you want to delete',
+    Category_name: 'Category name',
     notice: {
         Failed_to_delete: 'Failed to delete',
         Successful_operation: 'Successful operation',
