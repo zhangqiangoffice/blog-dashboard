@@ -30,7 +30,7 @@ export default {
 
 <style>
 .msg-alert {
-  top: 60px;
+  bottom: 20px;
   right: 20px;
   z-index: 1;
 }

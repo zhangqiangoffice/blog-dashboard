@@ -9,7 +9,7 @@
           <b-dropdown-item to="/category">{{ 'nav.Category_List' | t }}</b-dropdown-item>
           <b-dropdown-item to="/categoryAdd">{{ 'nav.New_Category' | t }}</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown :text="'Contents' | t" right>
+        <b-nav-item-dropdown :text="'nav.Contents' | t" right>
           <b-dropdown-item to="/content">{{ 'nav.Content_List' | t }}</b-dropdown-item>
           <b-dropdown-item to="/contentAdd">{{ 'nav.New_Content' | t }}</b-dropdown-item>
         </b-nav-item-dropdown>

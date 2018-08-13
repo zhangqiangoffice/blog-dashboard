@@ -21,9 +21,11 @@ export default {
     Confirm: 'Confirm',
     Attention: 'Attention',
     Cancel: 'Cancel',
-    Confirm_delete_user: 'Confirm that you want to delete user',
-    Failed_to_delete_the_user: 'Failed to delete the user',
-    Successful_operation: 'Successful operation',
+    Confirm_delete: 'Confirm that you want to delete',
+    notice: {
+        Failed_to_delete: 'Failed to delete',
+        Successful_operation: 'Successful operation',
+    },
     nav: {
         Users: 'Users',
         Categories: 'Categories',

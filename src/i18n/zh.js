@@ -21,9 +21,11 @@ export default {
     Confirm: '确认',
     Attention: '注意',
     Cancel: '取消',
-    Confirm_delete_user: '确认要删除用户',
-    Failed_to_delete_the_user: '删除用户失败',
-    Successful_operation: '操作成功',
+    Confirm_delete: '确认要删除',
+    notice: {
+        Failed_to_delete: '删除失败',
+        Successful_operation: '操作成功',
+    },
     nav: {
         Users: '用户管理',
         Categories: '分类管理',
