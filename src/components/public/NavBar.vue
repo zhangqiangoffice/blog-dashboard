@@ -4,14 +4,14 @@
     <b-navbar-brand to="/">{{ 'My_Blog' | t }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav v-if="hasLogined">
-        <b-nav-item to="/user">用户管理</b-nav-item>
-        <b-nav-item-dropdown text="分类管理" right>
-          <b-dropdown-item to="/category">分类列表</b-dropdown-item>
-          <b-dropdown-item to="/categoryAdd">添加分类</b-dropdown-item>
+        <b-nav-item to="/user">{{ 'nav.Users' | t }}</b-nav-item>
+        <b-nav-item-dropdown :text="'nav.Categories' | t" right>
+          <b-dropdown-item to="/category">{{ 'nav.Category_List' | t }}</b-dropdown-item>
+          <b-dropdown-item to="/categoryAdd">{{ 'nav.New_Category' | t }}</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="文章管理" right>
-          <b-dropdown-item to="/content">文章列表</b-dropdown-item>
-          <b-dropdown-item to="/contentAdd">添加文章</b-dropdown-item>
+        <b-nav-item-dropdown :text="'Contents' | t" right>
+          <b-dropdown-item to="/content">{{ 'nav.Content_List' | t }}</b-dropdown-item>
+          <b-dropdown-item to="/contentAdd">{{ 'nav.New_Content' | t }}</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <b-nav-text v-else>{{ 'Blogs_backstage_management_system' | t }}</b-nav-text>

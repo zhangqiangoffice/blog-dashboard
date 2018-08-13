@@ -24,5 +24,14 @@ export default {
     Confirm_delete_user: '确认要删除用户',
     Failed_to_delete_the_user: '删除用户失败',
     Successful_operation: '操作成功',
+    nav: {
+        Users: '用户管理',
+        Categories: '分类管理',
+        Contents: '文章管理',
+        Category_List: '分类列表',
+        New_Category: '添加分类',
+        Content_List: '文章列表',
+        New_Content: '添加文章',
+    }
 
 }

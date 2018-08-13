@@ -1,5 +1,5 @@
 <template>
-  <PageContainer pageName="用户列表">
+  <PageContainer pageName="nav.Users">
     <user-list />
   </PageContainer>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <b-container>
-    <Breadcrumb :pageName="pageName" />
-    <h5>{{ pageName }}</h5>
+    <Breadcrumb :pageName="name" />
+    <h5>{{ name }}</h5>
     <slot></slot>
   </b-container>
 </template>
@@ -12,6 +12,11 @@ import Breadcrumb from './Breadcrumb.vue'
 export default {
   props: {
     pageName: String
+  },
+  computed: {
+    name: function() {
+      return this.$t(this.pageName)
+    }
   },
   components: {
     Breadcrumb,

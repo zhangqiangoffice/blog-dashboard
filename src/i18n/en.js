@@ -24,5 +24,14 @@ export default {
     Confirm_delete_user: 'Confirm that you want to delete user',
     Failed_to_delete_the_user: 'Failed to delete the user',
     Successful_operation: 'Successful operation',
+    nav: {
+        Users: 'Users',
+        Categories: 'Categories',
+        Contents: 'Contents',
+        Category_List: 'Category List',
+        New_Category: 'New Category',
+        Content_List: 'Content List',
+        New_Content: 'New Content',
+    }
 
 }
