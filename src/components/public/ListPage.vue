@@ -4,7 +4,7 @@
       <slot></slot>
       <progress-overlay v-show="isLoading"/>
     </div>
-    <b-pagination :disabled="isLoading" align="right" size="md" :total-rows="total" v-model="page" :per-page="limit" @change="fetchData"></b-pagination>
+    <b-pagination :disabled="isLoading" align="right" size="md" :total-rows="total" :page="page" :per-page="limit" @change="fetchData"></b-pagination>
     <modal-delete :resetModal="resetModal" :deleteItem="deleteItem" :targetName="targetName"/>
     <slot name="editModal"></slot>
   </div>

@@ -19,7 +19,8 @@ export default {
     methods: {
         fetchData: function (page) {
             this.isLoading = true
-            return this.getDataListAPI(page || this.page, this.limit)
+            if (page) this.page = page
+            return this.getDataListAPI(this.page, this.limit)
             .then(res => {
                 this.list = res.data.list
                 this.total = res.data.total
@@ -35,11 +36,8 @@ export default {
             this.$root.$emit('bv::show::modal', 'modalDelete', button)
         },
         reloadAfterSuccess (page) {
-            if (page) {
-                this.page = page
-            }
             this.$store.dispatch({ type: 'showAlert', content: this.$t('notice.Successful_operation'), variant: ALERT_VARIANT.SUCCESS })
-            return this.fetchData()
+            return this.fetchData(page)
         },
         deleteItem() {
             this.isLoading = true
