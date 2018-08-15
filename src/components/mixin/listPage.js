@@ -38,7 +38,7 @@ export default {
             if (page) {
                 this.page = page
             }
-            this.$store.dispatch({ type: 'showAlert', content: `${this.$t('notice.Successful_operation')}`, variant: ALERT_VARIANT.SUCCESS })
+            this.$store.dispatch({ type: 'showAlert', content: this.$t('notice.Successful_operation'), variant: ALERT_VARIANT.SUCCESS })
             return this.fetchData()
         },
         deleteItem() {

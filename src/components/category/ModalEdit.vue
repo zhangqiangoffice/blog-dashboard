@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     submit: function (evt) {
-      this.description = ''
       const { _id, name } = this.target;
       if (this.categoryName !== name) {
         evt.preventDefault()

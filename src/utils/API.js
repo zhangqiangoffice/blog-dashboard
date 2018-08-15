@@ -10,14 +10,10 @@ const axiosForm = Axios.create({
         data = Qs.stringify(data);
         return data;
     }],
-
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 })
 
-const login = (username, password) => axiosForm.post(URI.login(), {
-    username,
-    password
-})
+const login = (username, password) => axiosForm.post(URI.login(), { username, password })
 
 const checkLogin = () => axiosForm.get(URI.checkLogin())
 
@@ -32,6 +28,8 @@ const getCategoryList = (page, limit) => axiosForm.get(URI.categories(), { param
 const deleteCategoryById = id => axiosForm.delete(URI.categories(id))
 
 const updateCategory = (id, name) => axiosForm.put(URI.categories(id), { name })
+
+const createCategory = (name) => axiosForm.post(URI.categories(), { name })
 
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
@@ -53,4 +51,5 @@ export default {
     getCategoryList,
     deleteCategoryById,
     updateCategory,
+    createCategory,
 }

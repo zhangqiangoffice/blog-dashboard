@@ -24,7 +24,7 @@ export default new Router({
     {
       path: '/categoryAdd',
       name: 'categoryAdd',
-      component: () => import('./views/CategoryAdd.vue')
+      component: () => import('./components/category/AddTab.vue')
     },
     {
       path: '/content',
