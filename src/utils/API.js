@@ -35,6 +35,8 @@ const getContentList = (page, limit) => axiosForm.get(URI.contents(), { params: 
 
 const deleteContentById = id => axiosForm.delete(URI.contents(id))
 
+const createContent = (category, title, description, content) => axiosForm.post(URI.contents(), { category, title, description, content })
+
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
     if (err.response && err.response.status === 403 ) {
@@ -58,4 +60,5 @@ export default {
     createCategory,
     getContentList,
     deleteContentById,
+    createContent,
 }

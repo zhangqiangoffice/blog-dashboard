@@ -15,7 +15,7 @@
       </b-form-input>
     </b-form-group>
     <b-button type="reset" variant="secondary" class="mr-2">{{ 'btn.Reset' | t }}</b-button>
-    <b-button type="submit" variant="primary">{{ 'btn.Submit' | t }}</b-button>
+    <b-button type="submit" variant="success">{{ 'btn.Submit' | t }}</b-button>
     <progress-overlay v-show="isLoading"/>
   </b-form>
 </template>

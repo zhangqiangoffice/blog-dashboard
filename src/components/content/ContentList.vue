@@ -31,6 +31,9 @@ export default {
             return value ? new Date(value).toLocaleString() : ''
           }
         },{
+          key: 'author.username',
+          label: this.$t('content.Author')
+        },{
           key: 'category.name',
           label: this.$t('Category_name')
         },{
