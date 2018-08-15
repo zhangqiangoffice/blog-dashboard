@@ -6,6 +6,7 @@ const concatRestUri = (id, item) => id ? `/dashboard/${item}/${id}` : `/dashboar
 
 const users = id => concatRestUri(id, 'users')
 const categories = id => concatRestUri(id, 'categories')
+const contents = id => concatRestUri(id, 'contents')
 
 export default {
     login,
@@ -13,4 +14,5 @@ export default {
     logout,
     users,
     categories,
+    contents,
 }

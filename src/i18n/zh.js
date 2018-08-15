@@ -22,6 +22,11 @@ export default {
     Category_name: '分类名称',
     Enter_name: '输入名称',
     Category_name_can_not_be_empty: '分类名不得为空',
+    content: {
+        Title: '标题',
+        Views: '阅读次数',
+        Pubdate: '发布时间',
+    },
     btn: {
         Delete: '删除',
         Edit: '编辑',

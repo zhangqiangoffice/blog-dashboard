@@ -18,11 +18,15 @@ export default {
     No: 'No',
     Actions: 'Actions',
     Attention: 'Attention',
-
     Confirm_delete: 'Confirm that you want to delete',
     Category_name: 'Category name',
     Enter_name: 'Enter name',
     Category_name_can_not_be_empty: 'Category name can not be empty',
+    content: {
+        Title: 'Title',
+        Views: 'Views',
+        Pubdate: 'Pubdate',
+    },
     btn: {
         Delete: 'Delete',
         Edit: 'Edit',

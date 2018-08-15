@@ -22,6 +22,7 @@ export default {
             if (page) this.page = page
             return this.getDataListAPI(this.page, this.limit)
             .then(res => {
+                console.log('=============res', res)
                 this.list = res.data.list
                 this.total = res.data.total
                 this.isLoading = false

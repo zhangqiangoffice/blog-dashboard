@@ -29,12 +29,12 @@ export default new Router({
     {
       path: '/content',
       name: 'content',
-      component: () => import('./views/Content.vue')
+      component: () => import('./components/content/ListTab.vue')
     },
     {
       path: '/contentAdd',
       name: 'contentAdd',
-      component: () => import('./views/ContentAdd.vue')
+      component: () => import('./components/content/AddTab.vue')
     },
   ]
 })
