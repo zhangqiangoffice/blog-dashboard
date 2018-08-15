@@ -2,16 +2,15 @@ const login = () => '/api/user/dashboardLogin'
 const checkLogin = () => '/api/user/checkAdminLogin'
 const logout = () => '/api/user/logout'
 
-const userList = () => '/dashboard/users'
-const users = id => `/dashboard/users/${id}`
+const concatRestUri = (id, item) => id ? `/dashboard/${item}/${id}` : `/dashboard/${item}`
 
-const categories = id => id ? `/dashboard/categories/${id}` : '/dashboard/categories'
+const users = id => concatRestUri(id, 'users')
+const categories = id => concatRestUri(id, 'categories')
 
 export default {
     login,
     checkLogin,
     logout,
-    userList,
     users,
     categories,
 }

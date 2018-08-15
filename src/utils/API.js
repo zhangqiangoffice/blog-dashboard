@@ -19,7 +19,7 @@ const checkLogin = () => axiosForm.get(URI.checkLogin())
 
 const logout = () => axiosForm.get(URI.logout())
 
-const getUserList = (page, limit) => axiosForm.get(URI.userList(), { params: { page, limit } })
+const getUserList = (page, limit) => axiosForm.get(URI.users(), { params: { page, limit } })
 
 const deleteUserById = id => axiosForm.delete(URI.users(id))
 
