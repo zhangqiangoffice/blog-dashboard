@@ -31,6 +31,8 @@ const getCategoryList = (page, limit) => axiosForm.get(URI.categories(), { param
 
 const deleteCategoryById = id => axiosForm.delete(URI.categories(id))
 
+const updateCategory = (id, name) => axiosForm.put(URI.categories(id), { name })
+
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
     if (err.response.status === 403 ) {
@@ -50,4 +52,5 @@ export default {
     deleteUserById,
     getCategoryList,
     deleteCategoryById,
+    updateCategory,
 }

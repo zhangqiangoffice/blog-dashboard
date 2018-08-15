@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="modalDelete" @hide="resetModal" @ok="deleteItem" :title="'Attention' | t" :ok-title="'Confirm' | t" :cancel-title="'Cancel' | t">
+  <b-modal id="modalDelete" @hidden="resetModal" @ok="deleteItem" :title="'Attention' | t" :ok-title="'btn.Confirm' | t" :cancel-title="'btn.Cancel' | t">
     <p>{{ 'Confirm_delete' | t }}: <strong variant="info">{{ targetName }}</strong> ?</p>
   </b-modal>
 </template>

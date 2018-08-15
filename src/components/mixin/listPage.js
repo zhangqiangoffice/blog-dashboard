@@ -1,6 +1,5 @@
 import API from '@/utils/API.js'
-import ProgressOverlay from '@/components/public/ProgressOverlay.vue'
-import ModalDelete from '@/components/public/ModalDelete.vue'
+import ListPage from '@/components/public/ListPage.vue'
 import { ALERT_VARIANT } from '@/utils/values'
 
 export default {
@@ -15,8 +14,7 @@ export default {
         }
     },
     components: {
-        ProgressOverlay,
-        ModalDelete,
+        ListPage,
     },
     methods: {
         fetchData: function (page) {
@@ -36,14 +34,19 @@ export default {
             this.target = item
             this.$root.$emit('bv::show::modal', 'modalDelete', button)
         },
+        reloadAfterSuccess (page) {
+            if (page) {
+                this.page = page
+            }
+            this.$store.dispatch({ type: 'showAlert', content: `${this.$t('notice.Successful_operation')}`, variant: ALERT_VARIANT.SUCCESS })
+            return this.fetchData()
+        },
         deleteItem() {
             this.isLoading = true
             this.deleteItemAPI(this.target._id)
                 .then(res => {
                     if (res.data.code === 0) {
-                        this.page = 1
-                        this.$store.dispatch({ type: 'showAlert', content: `${this.$t('notice.Successful_operation')}`, variant: ALERT_VARIANT.SUCCESS })
-                        return this.fetchData()
+                        return this.reloadAfterSuccess(1)
                     } else {
                         this.$store.dispatch({ type: 'showAlert', content: res.data.message, variant: ALERT_VARIANT.DANGER })
                     }
@@ -60,6 +63,6 @@ export default {
         }
     },
     mounted: function () {
-            this.fetchData()
+        this.fetchData()
     }
 }

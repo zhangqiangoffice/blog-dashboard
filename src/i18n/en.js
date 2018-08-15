@@ -17,12 +17,20 @@ export default {
     Yes: 'Yes',
     No: 'No',
     Actions: 'Actions',
-    Delete: 'Delete',
-    Confirm: 'Confirm',
     Attention: 'Attention',
-    Cancel: 'Cancel',
+
     Confirm_delete: 'Confirm that you want to delete',
     Category_name: 'Category name',
+    Enter_name: 'Enter name',
+    Category_name_can_not_be_empty: 'Category name can not be empty',
+    btn: {
+        Delete: 'Delete',
+        Edit: 'Edit',
+        Confirm: 'Confirm',
+        Cancel: 'Cancel',
+        Submit: 'Submit',
+        Reset: 'Reset',
+    },
     notice: {
         Failed_to_delete: 'Failed to delete',
         Successful_operation: 'Successful operation',

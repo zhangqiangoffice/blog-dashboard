@@ -1,5 +1,5 @@
 <template>
-  <PageContainer pageName="nav.Categories">
+  <PageContainer pageName="nav.Category_List">
     <category-list />
   </PageContainer>
 </template>
