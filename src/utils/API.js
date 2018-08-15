@@ -37,6 +37,8 @@ const deleteContentById = id => axiosForm.delete(URI.contents(id))
 
 const createContent = (category, title, description, content) => axiosForm.post(URI.contents(), { category, title, description, content })
 
+const updateContent = (id, category, title, description, content) => axiosForm.put(URI.contents(id), { category, title, description, content })
+
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
     if (err.response && err.response.status === 403 ) {
@@ -61,4 +63,5 @@ export default {
     getContentList,
     deleteContentById,
     createContent,
+    updateContent,
 }

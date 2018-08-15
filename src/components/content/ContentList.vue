@@ -2,12 +2,12 @@
   <list-page :isLoading="isLoading" :total="total" :page="page" :limit="limit" :targetName="targetName" :fetchData="fetchData" :resetModal="resetModal" :deleteItem="deleteItem">
     <b-table striped bordered hover :items="list" :fields="fields">
       <template slot="actions" slot-scope="row">
-        <!-- <b-button size="sm" @click.stop="openEditModal(row.item, $event.target)" class="mr-2" variant="info">{{ 'btn.Edit' | t }}</b-button> -->
+        <b-button size="sm" @click.stop="openEditModal(row.item, $event.target)" class="mr-2" variant="info">{{ 'btn.Edit' | t }}</b-button>
         <b-button size="sm" @click.stop="deleteConfirm(row.item, $event.target)" class="mr-2" variant="danger">{{ 'btn.Delete' | t }}</b-button>
       </template>
     </b-table>
     <template slot="editModal">
-      <!-- <modal-edit :resetModal="resetModal" :reloadAfterSuccess="reloadAfterSuccess" :target="target" /> -->
+      <modal-edit :resetModal="resetModal" :reloadAfterSuccess="reloadAfterSuccess" :categories="categories" :target="target" />
     </template>
   </list-page>
 </template>
@@ -15,10 +15,17 @@
 <script>
 import API from '@/utils/API.js'
 import listPage from '@/components/mixin/listPage.js'
-// import ModalEdit from './ModalEdit.vue'
+import ModalEdit from './ModalEdit.vue'
 
 export default {
   mixins: [listPage],
+  data () {
+    return {
+      categories: [
+        { value: null, text: this.$t('Please_select_one_item') }
+      ],
+    }
+  },
   computed: {
     fields: function(){
       return [{
@@ -49,7 +56,7 @@ export default {
     }
   },
   components: {
-    // ModalEdit,
+    ModalEdit,
   },
   methods: {
     getDataListAPI: API.getContentList,
@@ -59,5 +66,19 @@ export default {
       this.$root.$emit('bv::show::modal', 'modalEdit', button)
     },
   },
+  mounted: function () {
+    API.getCategoryList()
+    .then(res => {
+      if (!res.data.code) {
+        const { list } = res.data
+        list.forEach(element => {
+          this.categories.push({ value: element._id, text: element.name })
+        });
+      } else {
+        API.handleErr({}, res.data.message)
+      }
+    })
+    .catch(API.handleErr)
+  }
 }
 </script>
