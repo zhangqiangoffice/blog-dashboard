@@ -35,7 +35,7 @@ const updateCategory = (id, name) => axiosForm.put(URI.categories(id), { name })
 
 const handleErr = (err, msg) => {
     console.log('API err: ', err)
-    if (err.response.status === 403 ) {
+    if (err.response && err.response.status === 403 ) {
         store.dispatch({ type: 'logoutCompleted' })
     }
     if (msg) {
