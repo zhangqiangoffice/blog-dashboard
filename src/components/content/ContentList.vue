@@ -30,7 +30,7 @@ export default {
     fields: function(){
       return [{
           key: 'title',
-          label: this.$t('content.Title')
+          label: this.$t('content.Title'),
         },{
           key: 'addTime',
           label: this.$t('content.Pubdate'),

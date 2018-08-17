@@ -1,7 +1,7 @@
 <template>
   <b-navbar toggleable="md" type="dark" variant="dark" class="mb-3">
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <b-navbar-brand to="/">{{ 'My_Blog' | t }}</b-navbar-brand>
+    <b-navbar-brand href="/">{{ 'My_Blog' | t }}</b-navbar-brand>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav v-if="hasLogined">
         <b-nav-item to="/user">{{ 'nav.Users' | t }}</b-nav-item>
