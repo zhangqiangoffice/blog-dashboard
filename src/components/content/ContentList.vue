@@ -1,6 +1,9 @@
 <template>
   <list-page :isLoading="isLoading" :total="total" :page="page" :limit="limit" :targetName="targetName" :fetchData="fetchData" :resetModal="resetModal" :deleteItem="deleteItem">
     <b-table striped bordered hover :items="list" :fields="fields">
+      <template slot="title" slot-scope="row">
+        <b-link :href="`/view?contentid=${row.item._id}`">{{ row.item.title }}</b-link>
+      </template>
       <template slot="actions" slot-scope="row">
         <b-button size="sm" @click.stop="openEditModal(row.item, $event.target)" class="mr-2" variant="info">{{ 'btn.Edit' | t }}</b-button>
         <b-button size="sm" @click.stop="deleteConfirm(row.item, $event.target)" class="mr-2" variant="danger">{{ 'btn.Delete' | t }}</b-button>
@@ -31,6 +34,9 @@ export default {
       return [{
           key: 'title',
           label: this.$t('content.Title'),
+          formatter: value => {
+            return value ? `<a>${value}</a>` : ''
+          }
         },{
           key: 'addTime',
           label: this.$t('content.Pubdate'),
